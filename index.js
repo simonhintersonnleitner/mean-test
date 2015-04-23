@@ -1,8 +1,8 @@
 var app = require('express')();
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var io = require('socket.io')(http, {path: '/mean/socket.io'});
 
-app.get('/', function(req, res){
+app.get('/mean', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
@@ -13,5 +13,5 @@ io.on('connection', function(socket){
 });
 
 http.listen(3000, function(){
-  console.log('listening on *:3000');
+  console.log('Im running!\nlistening on *:3000');
 });
